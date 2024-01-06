@@ -15,23 +15,8 @@ def restart():
         line.config(text='_')
     current = 0
 
-def check():
-    global tries
-    if tries >= 10:
-        lbl.config(text='Sorry, you have reached the maximum number of tries.')
-        return
-    
-    correct_number = ''.join(str(random.randint(1, 6)) for _ in range(5))
-    
-    guessed_number = ''.join(map(lambda line: line.cget('text'), lines))
-    correct_position = sum(map(lambda x, y: x == y, correct_number, guessed_number))
-    
-    if correct_position == 5:
-        lbl.config(text=f'Congratulations! You guessed the correct number and position in {tries} tries!')
-    else:
-        tries += 1
-        lbl.config(text=f'Correct digits in position: {correct_position}. Try again! Attempts remaining: {10 - tries}')
-
+def check():   
+    print(random.randint(1,6))
     
 
 root = Tk()
@@ -92,6 +77,5 @@ line5.grid(row=0,column=4,pady=10)
 
 lines = [line1,line2,line3,line4,line5]
 current = 0
-tries = 0
 
 root.mainloop()
